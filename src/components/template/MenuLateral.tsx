@@ -1,7 +1,8 @@
+import Image from 'next/image'
 import useAuth from "../../data/hook/useAuth";
-import { IconeAjustes, IconeCasa, IconeSair, IconeSino } from "../icons";
-import Logo from "./Logo";
+import { IconeAjustes, IconeCasa, IconeEmpenho, IconeNotaFiscal, IconeProtocolo, IconeSair } from "../icons";
 import MenuItem from "./MenuItem";
+import IconOM from '../icons/iconOM.png';
 
 export default function MenuLateral() {
     const { logout } = useAuth()
@@ -12,15 +13,16 @@ export default function MenuLateral() {
             <div className={`
                 flex flex-col 
                 items-center justify-center
-                bg-gradient-to-r from-indigo-500 to-purple-800
-                h-20 w-20 
+                h-16 w-20 
             `}>
-                <Logo />
+                <Image src={IconOM} alt="Picture of the author" width="50" height="50" />
             </div>
             <ul className="flex-grow">
-                < MenuItem url="/" texto="Início" icone={IconeCasa} />
-                <MenuItem url="/ajustes" texto="Ajustes" icone={IconeAjustes} />
-                <MenuItem url="/notificacoes" texto="Notificações" icone={IconeSino} />
+                <MenuItem url="/" texto="Início" icone={IconeCasa} />
+                <MenuItem url="/empenhos" texto="Empenhos" icone={IconeEmpenho()} />
+                <MenuItem url="/notas-fiscais" texto="Notas Fiscais" icone={IconeNotaFiscal()} />
+                <MenuItem url="/protocolos" texto="Protocolo" icone={IconeProtocolo()} />
+                <MenuItem url="/ajustes" texto="Minha conta" icone={IconeAjustes} />
             </ul >
             <ul className="">
                 <MenuItem onCLick={logout}
